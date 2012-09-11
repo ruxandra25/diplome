@@ -68,7 +68,7 @@ function diplome_update_instance($diplome) {
  */
 function diplome_delete_instance($id) {
 
-    if (! $diplome = get_record('diplome', 'id', $id)) {
+  /*  if (! $diplome = get_record('diplome', 'id', $id)) {
         return false;
     }
 
@@ -78,9 +78,9 @@ function diplome_delete_instance($id) {
 
     if (! delete_records('diplome', 'id', $diplome->id)) {
         $result = false;
-    }
+    }*/
 
-    return $result;
+    return true;
 }
 
 
