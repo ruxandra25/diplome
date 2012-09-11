@@ -35,6 +35,14 @@ echo $OUTPUT->header();
 
 build_tabs('generate', $id, $n);
 
+if(has_capability('mod/diplome:generate', $context)) {
+	echo 'are capabilitati';
+}
+
+else {
+	echo 'nu are capabilitati';
+}
+
 
 
 echo $OUTPUT->footer();

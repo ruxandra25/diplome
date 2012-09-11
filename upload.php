@@ -36,6 +36,14 @@ echo $OUTPUT->header();
 
 build_tabs('upload', $id, $n);
 
+if(has_capability('mod/diplome:upload', $context)) {
+	echo 'are capabilitati';
+}
+
+else {
+	echo 'nu are capabilitati';
+}
+
 
 
 echo $OUTPUT->footer();
