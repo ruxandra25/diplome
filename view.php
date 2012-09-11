@@ -61,14 +61,6 @@ else {
 	echo 'nu are capabilitati';
 }
 
-if (has_capability('mod/diplome:currentcertificate', $context)) {
-   
-		echo "are";
-	}
-else 	
-	{
- 	echo "nu are";
-	}
 
 /*
 global $DB;

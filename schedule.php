@@ -44,6 +44,13 @@ echo $OUTPUT->header();
 
 build_tabs('schedule',$id,$n);
 
-echo 'Schedule';
+if(has_capability('mod/diplome:schedule', $context)) {
+	echo 'are capabilitati';
+}
+
+else {
+	echo 'nu are capabilitati';
+}
+
 
 echo $OUTPUT->footer($course);

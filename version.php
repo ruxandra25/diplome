@@ -9,7 +9,7 @@
  * @package mod/diplome
  */
 
-$module->version  = 2012091102;  // The current module version (Date: YYYYMMDDXX)
+$module->version  = 2012091103;  // The current module version (Date: YYYYMMDDXX)
 $module->cron     = 0;           // Period for cron to check this module (secs)
 
 ?>
