@@ -58,6 +58,15 @@ echo $OUTPUT->header();
 
 build_tabs('view',$id,$n);
 
+if (has_capability('mod/diplome:currentcertificate', $context)) {
+   
+		echo "are";
+	}
+else 	
+	{
+ 	echo "nu are";
+	}
+
 /*
 $context = get_context_instance(CONTEXT_MODULE, $cm->id);
 $mgmtcourse = $DB->get_record('course',array('idnumber'=>'2'));
