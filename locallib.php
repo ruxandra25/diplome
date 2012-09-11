@@ -430,7 +430,7 @@ function print_student_diplomas_table($user, $param, $val) {
 			$row = array();
 			$row[] = '<a href="'.$CFG->wwwroot.'/course/view.php?id='.$course->id.'">'.$coursename.'</a>';
 
-			$dip = $DB->get_record('diplome_diploma', array('courseid'=> $course->id), 'userid', $user->id);
+			$dip = $DB->get_record('diplome_diploma', array('courseid'=> $course->id, 'userid'=>$user->id));
 			if ($dip == false) {
 				$row[] = get_string('unavailable', 'diplome');
 				$row[] = ''; $row[] = ''; $row[] = ''; $row[] = '';

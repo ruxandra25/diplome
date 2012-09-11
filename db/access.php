@@ -2,7 +2,7 @@
 $capabilities = array(
 	
     'mod/diplome:currentcertificate' => array(
-        'captype' => 'read',
+        'captype' => 'write',
         'contextlevel' => CONTEXT_MODULE,
         'legacy' => array(
 			'student' => CAP_ALLOW

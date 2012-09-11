@@ -22,14 +22,19 @@ $showstatus = optional_param('showstatus', 0, PARAM_INT);
 $action = optional_param('action', 0, PARAM_INT);
 $page = optional_param('page', 0, PARAM_INT);
 
+
 if ($id) {
     $cm         = get_coursemodule_from_id('diplome', $id, 0, false, MUST_EXIST);
     $course     = $DB->get_record('course', array('id' => $cm->course), '*', MUST_EXIST);
     $diplome  = $DB->get_record('diplome', array('id' => $cm->instance), '*', MUST_EXIST);
+	$param = 'id';
+	$val = $id; 
 } elseif ($n) {
     $diplome  = $DB->get_record('diplome', array('id' => $n), '*', MUST_EXIST);
     $course     = $DB->get_record('course', array('id' => $diplome->course), '*', MUST_EXIST);
     $cm         = get_coursemodule_from_instance('diplome', $diplome->id, $course->id, false, MUST_EXIST);
+	$param = 'n';
+	$val = $n;
 } else {
     error('You must specify a course_module ID or an instance ID');
 }
@@ -54,8 +59,64 @@ build_tabs('view', $id, $n);
 //require_capability($capability, $context);
 
 if(has_capability('mod/diplome:currentcertificate', $context)) {
-	echo 'are capabilitati';
-}
+	echo "merge";
+	/// Print student print options for current diplomas
+			echo '<h2>'.get_string('studentmoduleheader', 'diplome').'</h2>';
+
+			/// TODO First check if there are submitted print requests
+		
+			if (!empty($_POST['actions'])) {
+				$dipids = $_POST['dipids'];
+				$actions = $_POST['actions'];
+			// if ($actions !== false)  {  
+					foreach ($actions as $act) {
+						/// Verify whether the diploma corresponds to this course and this USER
+						$requesteddip = $DB->get_record('diplome_diploma', 'id', $dipids[$act]);
+						/// Only if requested dip exists
+						if ($requesteddip !== false) {
+							if ($requesteddip->userid != $USER->id) {
+								echo '<p class="error">'.get_string('wrongcertificateowner', 'diplome').'</p>';
+								continue;
+							}
+
+							$course2 = $DB->get_record('course', 'id', $requesteddip->courseid);
+							if(!$course2) {
+								echo '<p class="error"><b>'.$requesteddip->id.'</b> : '.get_string('invalidcourseidindatabase', 'diplome').'</p>';
+								// delete_records('diplome_diploma', 'id', $requesteddip->id);
+								continue;
+							}
+							
+							$roleassign = get_valid_roleassign ($requesteddip->userid, $requesteddip->courseid);
+								
+							if (!$roleassign) {
+								echo '<p class="error"><b>'.$course2->fullname.'</b> : '.get_string('studentviewinvalidroleassignindatabase', 'diplome').'</p>'; 
+								// delete_records('diplome_diploma', 'id', $requesteddip->id);   
+								// unlink($CFG->dataroot.'/'.$filepath);
+								continue;
+							}
+
+							$filepath = 'user/d0/'.$requesteddip->userid.'/'.$course2->fullname.'.pdf';
+							if (!file_exists($CFG->dataroot.'/'.    $filepath)) {
+								echo '<p class="error"><b>'.$requesteddip->userid.'/'.$course2->fullname.'.pdf'.'</b> : '.get_string('certificatefiledeleted', 'diplome').'</p>';
+								// delete_records('diplome_diploma', 'id', $requesteddip->id);
+								continue;
+							}
+							
+							if ($requesteddip->status>1) {
+								echo '<p class="error">'.get_string('certificatefileprinted', 'diplome').'</p>';
+							}
+							if ($requesteddip->status == 0) {
+								$requesteddip->status = 1;
+								update_record('diplome_diploma', $requesteddip);
+							}
+						}
+					}
+						
+			}  
+			//print_action_select($id, $a, $action); 
+			print_student_diplomas_table($USER, $param, $val);
+		
+	}
 
 else {
 	echo 'nu are capabilitati';
