@@ -12,10 +12,14 @@ if ($id) {
     $cm         = get_coursemodule_from_id('diplome', $id, 0, false, MUST_EXIST);
     $course     = $DB->get_record('course', array('id' => $cm->course), '*', MUST_EXIST);
     $diplome  = $DB->get_record('diplome', array('id' => $cm->instance), '*', MUST_EXIST);
+	$param = 'id';
+	$val = $id; 
 } elseif ($n) {
     $diplome  = $DB->get_record('diplome', array('id' => $n), '*', MUST_EXIST);
     $course     = $DB->get_record('course', array('id' => $diplome->course), '*', MUST_EXIST);
     $cm         = get_coursemodule_from_instance('diplome', $diplome->id, $course->id, false, MUST_EXIST);
+	$param = 'n';
+	$val = $n; 
 } else {
     error('You must specify a course_module ID or an instance ID');
 }
@@ -36,7 +40,13 @@ echo $OUTPUT->header();
 build_tabs('generate', $id, $n);
 
 if(has_capability('mod/diplome:generate', $context)) {
-	echo 'are capabilitati';
+	$options[] = new tabobject ('fpage', 
+					'view.php?'.$param.'='.$val, 
+					get_string('tabgenerate', 'diplome'),
+					get_string('tabgeneratedesc', 'diplome'),
+					true);
+					
+	print_diploma_generator($course, $cm, $n, $id);
 }
 
 else {
