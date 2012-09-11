@@ -33,7 +33,7 @@ if(isset($id)) {
 		get_string('upload', 'diplome'), 
 		get_string('rollupload', 'diplome'),
 		true);
-	$options[]=new tabobject('printstatus', 
+	$options[]=new tabobject('print_status', 
 		$CFG->wwwroot.'/mod/diplome/print_status.php?id='.$id, 
 		get_string('printstatus', 'diplome'), 
 		get_string('rollprintstatus', 'diplome'),
