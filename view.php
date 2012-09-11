@@ -16,14 +16,11 @@ require_once(dirname(__FILE__).'/db/access.php');
 
 
 $id = optional_param('id', 0, PARAM_INT); // course_module ID, or
-$n  = optional_param('n', 0, PARAM_INT);  // diplome instance ID
+$n  = optional_param('a', 0, PARAM_INT);  // diplome instance ID
 $show = optional_param('show', 0, PARAM_INT); // 
 $showstatus = optional_param('showstatus', 0, PARAM_INT);
 $action = optional_param('action', 0, PARAM_INT);
 $page = optional_param('page', 0, PARAM_INT);
-
-global $DB;
-global $USER;
 
 if ($id) {
     $cm         = get_coursemodule_from_id('diplome', $id, 0, false, MUST_EXIST);
@@ -44,21 +41,30 @@ add_to_log($course->id, 'diplome', 'view', "view.php?id={$cm->id}", $diplome->na
 
 /// Print the page header
 
-//$strdiplomes = get_string('modulenameplural', 'diplome');
-//$strdiplome  = get_string('modulename', 'diplome');
-
 $PAGE->set_url('/mod/diplome/view.php', array('id' => $cm->id));
 $PAGE->set_title(format_string($diplome->name));
 $PAGE->set_heading(format_string($course->fullname));
 $PAGE->set_context($context);
 
-//$navigation = build_navigation($PAGE);
-
+// Output starts here
 echo $OUTPUT->header();
 
-build_tabs('view',$id,$n);
+build_tabs('view', $id, $n);
+
+//require_capability($capability, $context);
+
+if(has_capability('mod/diplome:currentcertificate', $context)) {
+	echo 'are capabilitati';
+}
+
+else {
+	echo 'nu are capabilitati';
+}
 
 /*
+global $DB;
+global $USER;
+
 $context = get_context_instance(CONTEXT_MODULE, $cm->id);
 $mgmtcourse = $DB->get_record('course',array('idnumber'=>'2'));
 //print_r($mgmtcourse);
@@ -317,9 +323,9 @@ if ($course->id == $mgmtcourse->id) {
 	
 	}
 }
-*/
+
 /// Finish the page
-//echo '</td></tr></table>';
+echo '</td></tr></table>';*/
 echo $OUTPUT->footer($course);
 
 ?>
