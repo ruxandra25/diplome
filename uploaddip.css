@@ -1,0 +1,45 @@
+table.choices {
+    text-align: left; 
+    border: 2px;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    border-color : #dddddd;
+    table-layout: fixed;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #FFF;
+}
+
+table.choices td{
+    text-align: center;
+    border: 1px solid #AAA;
+}
+
+table.choices h2{
+    color: #19405c;
+    font-size: 16px; 
+}
+
+table.events {
+    text-align: left; 
+    border: 2px;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    border-color : #dddddd;
+    table-layout: fixed;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #FFF;
+}
+
+
+table.events h2{
+    color: #19405c;
+    font-size: 16px; 
+}

@@ -1,0 +1,45 @@
+<table style="margin: auto;">
+  <tr>
+    <td>
+      <form method="get" action="event.php" id="delete">
+      <p>
+      &nbsp;
+      <input type="submit" value=" <?php print_string('delete') ?> " />
+	  <input type="hidden" name="<?php echo $param; ?>" value="<?php echo $val; ?>" />
+      <input type="hidden" name="eventid" value="<?php echo $event->id?>" />
+      <input type="hidden" name="action" value="delete" />
+      <input type="hidden" name="confirm" value="1" />
+      <input type="hidden" name="repeats" value="0" />
+      &nbsp;
+      </p>
+      </form>
+    </td>
+    <?php if($repeatcount > 1) { ?>
+    <td>
+      <form method="get" action="event.php" id="delete">
+      <p>
+      &nbsp;
+      <input type="submit" value=" <?php print_string('deleteall') ?> " />
+	  <input type="hidden" name="<?php echo $param; ?>" value="<?php echo $val; ?>" />
+      <input type="hidden" name="eventid" value="<?php echo $event->id?>" />
+      <input type="hidden" name="action" value="delete" />
+      <input type="hidden" name="confirm" value="1" />
+      <input type="hidden" name="repeats" value="1" />
+      &nbsp;
+      </p>
+      </form>
+    </td>
+    <?php } ?>
+    <td>
+      <form method="get" action="event.php" id="cancel">
+      <p>
+      &nbsp;
+      <input type="submit" value=" <?php print_string('cancel') ?> " />
+	  <input type="hidden" name="<?php echo $param; ?>" value="<?php echo $val; ?>" />
+      &nbsp;
+      </p>
+      </form>
+    </td>
+  </tr>
+</table>
+
