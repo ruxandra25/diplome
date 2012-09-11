@@ -13,10 +13,14 @@ if ($id) {
     $cm         = get_coursemodule_from_id('diplome', $id, 0, false, MUST_EXIST);
     $course     = $DB->get_record('course', array('id' => $cm->course), '*', MUST_EXIST);
     $diplome  = $DB->get_record('diplome', array('id' => $cm->instance), '*', MUST_EXIST);
+	$param = 'id';
+	$val = $id; 
 } elseif ($n) {
     $diplome  = $DB->get_record('diplome', array('id' => $n), '*', MUST_EXIST);
     $course     = $DB->get_record('course', array('id' => $diplome->course), '*', MUST_EXIST);
     $cm         = get_coursemodule_from_instance('diplome', $diplome->id, $course->id, false, MUST_EXIST);
+	$param = 'n';
+	$val = $n; 
 } else {
     error('You must specify a course_module ID or an instance ID');
 }
@@ -37,7 +41,13 @@ echo $OUTPUT->header();
 build_tabs('upload', $id, $n);
 
 if(has_capability('mod/diplome:upload', $context)) {
-	echo 'are capabilitati';
+	$options[] = new tabobject ('upload',
+					'view.php?'.$param.'='.$val.'&page=1',
+					get_string('tabupload', 'diplome'),
+					get_string('tabuploaddesc', 'diplome'),
+					true);
+					
+	print_upload_table($course, $cm, $n, $id);
 }
 
 else {
