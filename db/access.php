@@ -31,6 +31,17 @@ $capabilities = array(
         'captype' => 'write',
         'contextlevel' => CONTEXT_MODULE,
         'legacy' => array(
+<<<<<<< HEAD
+=======
+            'manager' => CAP_ALLOW
+        )
+    ),
+	
+	'mod/diplome:schedule' => array(
+        'captype' => 'write',
+        'contextlevel' => CONTEXT_MODULE,
+        'legacy' => array(
+>>>>>>> 7ca7a867065cefed6cbbf9d055e719fc2c207200
             'manager' => CAP_ALLOW
         )
     ),
