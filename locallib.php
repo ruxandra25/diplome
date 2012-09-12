@@ -100,7 +100,7 @@ $currenttab=$active;
 		true);
 
 	$options[]=new tabobject('edit', 
-		$CFG->wwwroot.'/mod/diplome/edit.php', 
+		$CFG->wwwroot.'/mod/diplome/edit.php?view=all', 
 		get_string('edit', 'diplome'), 
 		get_string('rolledit', 'diplome'),
 		true);

@@ -84,15 +84,15 @@ class add_template_form extends moodleform {
 		$mform->addElement('header', 'general', get_string('general', 'form'));
 
 		/// Adding the standard "name" field
-		$mform->addElement('text', 'nume', get_string('nume', 'diplome'));
-		$mform->setType('nume', PARAM_TEXT);
-		$mform->addRule('nume', null, 'required', null, 'client');
-		$mform->addRule('nume', get_string('maximumchars', '', 255), 'maxlength', 255, 'client');
-		
+		$mform->addElement('text', 'name', get_string('name', 'diplome'));
+		$mform->setType('name', PARAM_TEXT);
+		$mform->addRule('name', null, 'required', null, 'client');
+		$mform->addRule('name', get_string('maximumchars', '', 255), 'maxlength', 255, 'client');
+		$mform->setDefault('name', $this->_customdata['name']);
 		
 		$mform->addElement('textarea', 'description', get_string('description', 'diplome'));
 		$mform->setType('description', PARAM_TEXT);
-		
+		$mform->setDefault('description', $this->_customdata['description']);
 	
 		// $this->add_intro_editor();
 		

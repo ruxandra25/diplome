@@ -157,7 +157,7 @@ $string['rollprintstatus'] = 'Print Status';
 
 $string['dipl'] = 'Diplome pentru studenti'; 
 $string['certificate_template'] = 'Certificate Template';
-$string['nume'] = 'Nume'; 
+$string['name'] = 'Nume'; 
 $string['description'] = 'Description'; 
 $string['imagelabel'] = 'Choose Template'; 
 
@@ -168,6 +168,7 @@ $string['edit'] = 'Edit';
 $string['rolledit'] = 'RollEdit'; 
 
 $string['diploma_template_added'] = 'The Diploma Template has been Successfully added ';
+$string['diplometemplatesadmintitle'] = 'Diplome Templates AdminTitle';
 
 
  
