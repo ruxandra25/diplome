@@ -83,6 +83,32 @@ $tabs = array($options);
 print_tabs($tabs,$currenttab,$inactive,$activetwo);
 }
 
+function build_tabs_template($active){
+
+global $CFG;
+
+$options=array();
+$inactive=array();
+$activetwo=array();
+
+$currenttab=$active;
+
+	$options[]=new tabobject('add', 
+		$CFG->wwwroot.'/mod/diplome/add.php', 
+		get_string('add', 'diplome'), 
+		get_string('rolladd', 'diplome'),
+		true);
+
+	$options[]=new tabobject('edit', 
+		$CFG->wwwroot.'/mod/diplome/edit.php', 
+		get_string('edit', 'diplome'), 
+		get_string('rolledit', 'diplome'),
+		true);
+
+$tabs = array($options);
+print_tabs($tabs,$currenttab,$inactive,$activetwo);
+}
+
 function build_option($id, $name, $selected) {
 	$contents = '<option label="'.$name.'" value="'.$id.'"';
 	if ($selected) {
@@ -565,7 +591,7 @@ function print_upload_table($course, $cm, $a, $id) {
 			}
 		}
 		
-		$data = array ($OUTPUT->user_picture($user, array('courseid'=>$course->id)));
+		$data = array ($OUTPUT->user_picture($user, array('courseid'=>$course->id)),fullname($user));
 		$table->data[] = $data;   
 			//echo $OUTPUT->user_picture($user, array('courseid'=>$courseid));
 	}

@@ -69,4 +69,46 @@ class mod_diplome_mod_form extends moodleform_mod {
     }
 }
 
+class add_template_form extends moodleform {
+
+	function definition() {
+
+		global $COURSE;
+		global $DB;
+	
+		$mform =& $this->_form;
+		
+		
+		//-------------------------------------------------------------------------------
+		/// Adding the "general" fieldset, where all the common settings are showed
+		$mform->addElement('header', 'general', get_string('general', 'form'));
+
+		/// Adding the standard "name" field
+		$mform->addElement('text', 'nume', get_string('nume', 'diplome'));
+		$mform->setType('nume', PARAM_TEXT);
+		$mform->addRule('nume', null, 'required', null, 'client');
+		$mform->addRule('nume', get_string('maximumchars', '', 255), 'maxlength', 255, 'client');
+		
+		
+		$mform->addElement('textarea', 'description', get_string('description', 'diplome'));
+		$mform->setType('description', PARAM_TEXT);
+		
+	
+		// $this->add_intro_editor();
+		
+				
+		$mform->addElement('filepicker', 'tempfile', get_string('imagelabel','diplome'), null,
+				array('accepted_types' => '*'));
+				
+		
+		//-------------------------------------------------------------------------------
+		// add standard elements, common to all modules
+	
+		//-------------------------------------------------------------------------------
+		// add standard buttons, common to all modules
+		$this->add_action_buttons();
+
+	}
+}
+
 ?>

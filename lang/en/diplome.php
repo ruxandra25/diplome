@@ -155,5 +155,20 @@ $string['rollgenerate'] = 'Generate';
 $string['rollupload'] = 'Upload';
 $string['rollprintstatus'] = 'Print Status'; 
 
+$string['dipl'] = 'Diplome pentru studenti'; 
+$string['certificate_template'] = 'Certificate Template';
+$string['nume'] = 'Nume'; 
+$string['description'] = 'Description'; 
+$string['imagelabel'] = 'Choose Template'; 
+
+
+$string['add'] = 'Add'; 
+$string['rolladd'] = 'RollAdd'; 
+$string['edit'] = 'Edit'; 
+$string['rolledit'] = 'RollEdit'; 
+
+$string['diploma_template_added'] = 'The Diploma Template has been Successfully added ';
+
+
  
 ?>

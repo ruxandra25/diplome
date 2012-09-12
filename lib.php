@@ -216,11 +216,35 @@ function diplome_uninstall() {
 }
 
 
+function diplome_pluginfile($course, $cm, $context, $filearea, array $args, $forcedownload, array $options=array()) {
+    global $DB, $CFG;
+	
+	if ($context->contextlevel != CONTEXT_MODULE) {
+        send_file_not_found();
+    }
+	
+	$fs = get_file_storage();
+	$file = $DB->get_record_sql('SELECT * FROM {files} WHERE itemid = ? AND contextid = ? AND filearea = ? AND component = ? AND filesize > 0', array($args[0], $context->id, 'attachments', 'diplome'));
+	
+	if(!$file) {
+		send_file_not_found();
+	}
+	else {
+		$storedFile = $fs->get_file_by_id($file->id);
+		
+		if(!$storedFile) {
+			send_file_not_found();
+		}
+		send_stored_file($storedFile, 60*60, 0, true);  
+	}
+}
+
 //////////////////////////////////////////////////////////////////////////////////////
 /// Any other diplome functions go here.  Each of them must have a name that
 /// starts with diplome_
 /// Remember (see note in first lines) that, if this section grows, it's HIGHLY
 /// recommended to move all funcions below to a new "localib.php" file.
+
 
 
 ?>

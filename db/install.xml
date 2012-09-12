@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<XMLDB PATH="mod/diplome/db" VERSION="20100909" COMMENT="XMLDB file for Moodle mod/diplome"
+<XMLDB PATH="mod/diplome/db" VERSION="20120912" COMMENT="XMLDB file for Moodle mod/diplome"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
 >
@@ -32,7 +32,7 @@
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
       </KEYS>
     </TABLE>
-    <TABLE NAME="diplome_event" COMMENT="scheduled certificated take-away events" PREVIOUS="diplome_diploma">
+    <TABLE NAME="diplome_event" COMMENT="scheduled certificated take-away events" PREVIOUS="diplome_diploma" NEXT="diplome_templates">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="location"/>
         <FIELD NAME="location" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="repeatid"/>
@@ -44,14 +44,15 @@
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
       </KEYS>
     </TABLE>
+    <TABLE NAME="diplome_templates" COMMENT="Default comment for the table, please edit me" PREVIOUS="diplome_event">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="nume"/>
+        <FIELD NAME="nume" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" PREVIOUS="id" NEXT="descriere"/>
+        <FIELD NAME="descriere" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" PREVIOUS="nume"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
   </TABLES>
-  <STATEMENTS>
-    <STATEMENT NAME="insert log_display" TYPE="insert" TABLE="log_display" COMMENT="Initial insert of records on table log_display. Each record describes how data will be showed by log reports.">
-      <SENTENCES>
-        <SENTENCE TEXT="(module, action, mtable, field) VALUES ('diplome', 'add', 'diplome', 'name')" />
-        <SENTENCE TEXT="(module, action, mtable, field) VALUES ('diplome', 'update', 'diplome', 'name')" />
-        <SENTENCE TEXT="(module, action, mtable, field) VALUES ('diplome', 'view', 'diplome', 'name')" />
-      </SENTENCES>
-    </STATEMENT>
-  </STATEMENTS>
 </XMLDB>
