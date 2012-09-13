@@ -104,12 +104,6 @@ $currenttab=$active;
 		get_string('edit', 'diplome'), 
 		get_string('rolledit', 'diplome'),
 		true);
-		
-	$options[]=new tabobject('viewalltemp', 
-		$CFG->wwwroot.'/mod/diplome/viewalltemp?view=all', 
-		get_string('viewalltemp', 'diplome'), 
-		get_string('rollviewalltemp', 'diplome'),
-		true);
 
 $tabs = array($options);
 print_tabs($tabs,$currenttab,$inactive,$activetwo);
