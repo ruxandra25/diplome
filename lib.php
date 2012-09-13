@@ -219,10 +219,6 @@ function diplome_uninstall() {
 function diplome_pluginfile($course, $cm, $context, $filearea, array $args, $forcedownload, array $options=array()) {
     global $DB, $CFG;
 	
-	if ($context->contextlevel != CONTEXT_MODULE) {
-        send_file_not_found();
-    }
-	
 	$fs = get_file_storage();
 	$file = $DB->get_record_sql('SELECT * FROM {files} WHERE itemid = ? AND contextid = ? AND filearea = ? AND component = ? AND filesize > 0', array($args[0], $context->id, 'attachments', 'diplome'));
 	

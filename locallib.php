@@ -814,7 +814,7 @@ function get_url($context, $itemid){
 	
 	$url = $CFG->wwwroot.'/pluginfile.php';
 	$url.='/'.$context;
-	$url.='/mod_annotation';
+	$url.='/mod_diplome';
 	$url.='/attachments';
 	$url.='/'.$itemid;
 	
