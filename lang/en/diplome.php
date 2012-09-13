@@ -169,6 +169,7 @@ $string['rolledit'] = 'RollEdit';
 
 $string['diploma_template_added'] = 'The Diploma Template has been Successfully added ';
 $string['diplometemplatesadmintitle'] = 'Diplome Templates AdminTitle';
+$string['templateedited'] = 'The Template has been successfully Edited';
 
 
  

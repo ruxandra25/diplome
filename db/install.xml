@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<XMLDB PATH="mod/diplome/db" VERSION="20120912" COMMENT="XMLDB file for Moodle mod/diplome"
+<XMLDB PATH="mod/diplome/db" VERSION="20120913" COMMENT="XMLDB file for Moodle mod/diplome"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
 >
@@ -46,9 +46,9 @@
     </TABLE>
     <TABLE NAME="diplome_templates" COMMENT="Default comment for the table, please edit me" PREVIOUS="diplome_event">
       <FIELDS>
-        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="nume"/>
-        <FIELD NAME="nume" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" PREVIOUS="id" NEXT="descriere"/>
-        <FIELD NAME="descriere" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" PREVIOUS="nume"/>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="name"/>
+        <FIELD NAME="name" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" PREVIOUS="id" NEXT="description"/>
+        <FIELD NAME="description" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" PREVIOUS="name"/>
       </FIELDS>
       <KEYS>
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>

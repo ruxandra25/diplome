@@ -93,12 +93,17 @@ class add_template_form extends moodleform {
 		$mform->addElement('textarea', 'description', get_string('description', 'diplome'));
 		$mform->setType('description', PARAM_TEXT);
 		$mform->setDefault('description', $this->_customdata['description']);
+		
+		//print_r($this->_customdata['did']);
+		
+		$mform->addElement('hidden', 'did', $this->_customdata['did'] );
 	
 		// $this->add_intro_editor();
 		
 				
 		$mform->addElement('filepicker', 'tempfile', get_string('imagelabel','diplome'), null,
 				array('accepted_types' => '*'));
+					
 				
 		
 		//-------------------------------------------------------------------------------

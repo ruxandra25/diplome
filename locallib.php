@@ -807,3 +807,16 @@ function print_event ($ev, $param, $val, $allowededit) {
 	echo '</tr>';
 
 }
+
+
+function get_url($context, $itemid){
+	global $CFG, $DB, $USER;
+	
+	$url = $CFG->wwwroot.'/pluginfile.php';
+	$url.='/'.$context;
+	$url.='/mod_annotation';
+	$url.='/attachments';
+	$url.='/'.$itemid;
+	
+	return $url;
+}
